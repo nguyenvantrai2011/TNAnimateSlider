@@ -24,14 +24,16 @@
     [super viewDidAppear:animated];
 }
 - (IBAction)onclickRefreshButton:(id)sender {
-    if (!self.sldCustom.isAnimated) {
-        [UIView animateWithDuration:1.5 animations:^{
-            [self.sldCustom setValue:1.0 animated:YES];
+    if (!self.sldCustom.isAnimated && self.sldCustom.value > 1.0) {
+        [self.sldCustom slideDownWithFinishCompletion:^{
+            [UIView animateWithDuration:1.5 animations:^{
+                [self.sldCustom setValue:1.0 animated:YES];
+            }];
         }];
     }
 }
 - (IBAction)onclickAnimateButton:(id)sender {
-    if (!self.sldCustom.isAnimated) {
+    if (!self.sldCustom.isAnimated && self.sldCustom.value < 7.0) {
         [UIView animateWithDuration:1.5 animations:^{
             [self.sldCustom setValue:7.0 animated:YES];
         }];

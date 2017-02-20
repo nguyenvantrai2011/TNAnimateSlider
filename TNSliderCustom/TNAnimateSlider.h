@@ -17,4 +17,6 @@ IB_DESIGNABLE
 @property (strong, nonatomic) IBInspectable NSString *thumbImage;
 @property (assign, nonatomic) BOOL isAnimated;
 
+- (void)slideDownWithFinishCompletion:(void (^)())completion;
+
 @end

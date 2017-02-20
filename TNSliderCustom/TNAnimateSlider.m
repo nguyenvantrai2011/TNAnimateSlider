@@ -123,9 +123,26 @@
             UIImageView *imvThumb = object;
             [imvThumb stopAnimating];
             [imvThumb setImage:[UIImage imageNamed:@"01.png"]];
+            imvThumb.transform = CGAffineTransformMakeScale(1, 1);
             break;
         }
     }
     self.isAnimated = NO;
 }
+
+- (void)slideDownWithFinishCompletion:(void (^)())completion {
+    if ([self.subviews.lastObject isKindOfClass:[UIImageView class]]) {
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn
+                         animations:^(void) {
+                             UIImageView *imv = self.subviews.lastObject;
+                             imv.transform = CGAffineTransformMakeScale(-1, 1);
+                         }
+                         completion:^(BOOL finished) {
+                             if(finished){
+                                 completion();
+                             }
+                         }];
+    }
+}
+
 @end
