@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <LocalAuthentication/LocalAuthentication.h>
 
 @interface AppDelegate ()
 
@@ -18,51 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    int a = 3;
-    int b = 6;
-    a = a + b;
-    b = a - b;
-    a = a - b;
-    NSLog(@"a = %d", a);
-    NSLog(@"b = %d", b);
-    
-    LAContext *context = [[LAContext alloc] init];
-    
-    NSError *authError = nil;
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                 localizedReason:@"Authenticate to login"
-                           reply:^(BOOL success, NSError *error) {
-                               dispatch_async(dispatch_get_main_queue(), ^{
-                                   if (error) {
-                                       switch (error.code) {
-                                           case LAErrorAuthenticationFailed:
-                                               break;
-                                           case LAErrorUserFallback:
-                                               break;
-                                           case LAErrorUserCancel:
-                                               break;
-                                           default:
-                                               break;
-                                       }
-                                       
-                                   }
-                                   if (error) {
-                                       NSLog(@"%@", error);
-                                   }
-                                   if (success) {
-                                       NSLog(@"Login Success");
-                                   }
-                               });
-                               
-                           }];
-    } else {
-        NSLog(@"%@", authError);
-    }
     
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

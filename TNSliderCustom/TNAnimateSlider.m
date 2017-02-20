@@ -69,6 +69,7 @@
 
 - (void)setValue:(float)value animated:(BOOL)animated {
     [super setValue:value animated:animated];
+    self.isAnimated = YES;
     [self.lblName removeFromSuperview];
     for (id subView in self.subviews) {
         if ([subView isKindOfClass:[UIImageView class]]) {
@@ -125,5 +126,6 @@
             break;
         }
     }
+    self.isAnimated = NO;
 }
 @end

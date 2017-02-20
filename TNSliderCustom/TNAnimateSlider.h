@@ -15,5 +15,6 @@ IB_DESIGNABLE
 @property (strong, nonatomic) IBInspectable NSString *leftValue;
 @property (strong, nonatomic) IBInspectable NSString *name;
 @property (strong, nonatomic) IBInspectable NSString *thumbImage;
+@property (assign, nonatomic) BOOL isAnimated;
 
 @end

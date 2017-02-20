@@ -24,14 +24,18 @@
     [super viewDidAppear:animated];
 }
 - (IBAction)onclickRefreshButton:(id)sender {
-    [UIView animateWithDuration:1.5 animations:^{
-        [self.sldCustom setValue:1.0 animated:YES];
-    }];
+    if (!self.sldCustom.isAnimated) {
+        [UIView animateWithDuration:1.5 animations:^{
+            [self.sldCustom setValue:1.0 animated:YES];
+        }];
+    }
 }
 - (IBAction)onclickAnimateButton:(id)sender {
-    [UIView animateWithDuration:1.5 animations:^{
-        [self.sldCustom setValue:7.0 animated:YES];
-    }];
+    if (!self.sldCustom.isAnimated) {
+        [UIView animateWithDuration:1.5 animations:^{
+            [self.sldCustom setValue:7.0 animated:YES];
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
