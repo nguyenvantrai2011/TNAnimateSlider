@@ -27,7 +27,7 @@
 - (void)drawRect:(CGRect)rect {
     
     CGRect newRect = rect;
-    newRect.size.height = 34;
+    newRect.size.height = 39;
     
     [super drawRect:newRect];
     
@@ -74,7 +74,7 @@
     for (id subView in self.subviews) {
         if ([subView isKindOfClass:[UIImageView class]]) {
             NSMutableArray *arrImage = [NSMutableArray new];
-            for (int i = 1; i <= 11; i++) {
+            for (int i = 1; i <= 4; i++) {
                 NSString *strName = [NSString stringWithFormat:@"%.2d.png", i];
                 [arrImage addObject:[UIImage imageNamed:strName]];
             }
